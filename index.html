@@ -3,11 +3,70 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Charity Water Game</title>
+    <title>Water Rush</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1>Welcome to the Charity Water Game Prototype</h1>
+    <main class="app">
+        <header class="title-bar">
+            <h1>Water Rush</h1>
+            <p>Help a village protect clean water. Choose wisely each round.</p>
+        </header>
+
+        <section id="start-screen" class="card">
+            <h2>How to Play</h2>
+            <p>
+                You will face village events and choose between two actions.
+                Your choices change your resources and score. Reach the final
+                round with water left to win.
+            </p>
+            <button id="start-btn" class="btn btn-primary">Start Game</button>
+        </section>
+
+        <section id="game-screen" class="hidden">
+            <div class="layout-grid">
+                <aside class="card stats-panel">
+                    <h2>Village Stats</h2>
+                    <ul class="stats-list">
+                        <li>Round: <span id="round-value">1</span></li>
+                        <li>Score: <span id="score-value">0</span></li>
+                        <li>Water Supply: <span id="water-value">100</span></li>
+                        <li>Health: <span id="health-value">100</span></li>
+                        <li>Education: <span id="education-value">100</span></li>
+                        <li>Economy: <span id="economy-value">100</span></li>
+                    </ul>
+                </aside>
+
+                <section class="card event-panel">
+                    <h2 id="event-title">Event Title</h2>
+                    <p id="event-description">Event description goes here.</p>
+
+                    <p id="feedback-message" class="feedback neutral">
+                        Make a choice to continue.
+                    </p>
+
+                    <div class="choices">
+                        <button id="choice-a-btn" class="btn btn-choice">Choice A</button>
+                        <button id="choice-b-btn" class="btn btn-choice">Choice B</button>
+                    </div>
+
+                    <div class="controls">
+                        <button id="reset-btn" class="btn btn-secondary">Reset</button>
+                    </div>
+                </section>
+            </div>
+        </section>
+
+        <section id="end-screen" class="card hidden">
+            <h2 id="end-title">Game Over</h2>
+            <p id="end-message">Final message goes here.</p>
+            <p class="final-score">Final Score: <span id="final-score-value">0</span></p>
+            <button id="play-again-btn" class="btn btn-primary">Play Again</button>
+        </section>
+    </main>
+
+    <div id="confetti-container" aria-hidden="true"></div>
+
     <script src="script.js"></script>
 </body>
 </html>
