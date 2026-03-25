@@ -3,55 +3,94 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Water Rush</title>
+    <title>charity: water | Ripple Effect</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Montserrat:wght@400;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <main class="app">
         <header class="title-bar">
-            <h1>Water Rush</h1>
-            <p>Help a village protect clean water. Choose wisely each round.</p>
+            <p class="brand-kicker">charity: water mission game</p>
+            <h1>Ripple Effect</h1>
+            <p>Lead a village through real-world clean water decisions. Every choice affects health, education, and the future.</p>
         </header>
 
         <section id="start-screen" class="card">
-            <h2>How to Play</h2>
+            <h2>Your Mission</h2>
             <p>
-                You will face village events and choose between two actions.
-                Your choices change your resources and score. Reach the final
-                round with water left to win.
+                You are partnering with a community to protect clean water access.
+                In each round, choose one action. Your choices change village stats,
+                your impact score, and how many people keep safe water nearby.
             </p>
-            <button id="start-btn" class="btn btn-primary">Start Game</button>
+            <ul class="start-list">
+                <li>Build a streak with smart, mission-first choices.</li>
+                <li>Keep water, health, education, and economy above zero.</li>
+                <li>Increase water access to reach your impact goal.</li>
+            </ul>
+
+            <label for="difficulty-select" class="difficulty-label">Choose Difficulty</label>
+            <select id="difficulty-select" class="difficulty-select">
+                <option value="easy">Easy</option>
+                <option value="normal" selected>Normal</option>
+                <option value="hard">Hard</option>
+            </select>
+            <button id="start-btn" class="btn btn-primary">Start Mission</button>
         </section>
 
         <section id="game-screen" class="hidden">
             <div class="layout-grid">
                 <aside class="card stats-panel">
-                    <h2>Village Stats</h2>
+                    <h2>Village Dashboard</h2>
                     <ul class="stats-list">
                         <li>Round: <span id="round-value">1</span></li>
+                        <li>Mode: <span id="mode-value">Normal</span></li>
                         <li>Score: <span id="score-value">0</span></li>
+                        <li>Goal Score: <span id="goal-value">60</span></li>
+                        <li>Time Left: <span id="timer-value">16s</span></li>
+                        <li>Streak: <span id="streak-value">0</span></li>
+                        <li>People Reached: <span id="people-value">0</span></li>
                         <li>Water Supply: <span id="water-value">100</span></li>
                         <li>Health: <span id="health-value">100</span></li>
                         <li>Education: <span id="education-value">100</span></li>
                         <li>Economy: <span id="economy-value">100</span></li>
                     </ul>
+
+                    <div class="impact-meter" aria-live="polite">
+                        <p>Water Access Progress</p>
+                        <div class="impact-track">
+                            <div id="impact-fill" class="impact-fill"></div>
+                        </div>
+                        <p id="impact-label">0%</p>
+                    </div>
                 </aside>
 
                 <section class="card event-panel">
                     <h2 id="event-title">Event Title</h2>
                     <p id="event-description">Event description goes here.</p>
+                    <p id="mission-tip" class="mission-tip">Mission tip appears here.</p>
 
                     <p id="feedback-message" class="feedback neutral">
                         Make a choice to continue.
                     </p>
 
+                    <p id="milestone-message" class="milestone-message hidden" aria-live="polite"></p>
+
                     <div class="choices">
                         <button id="choice-a-btn" class="btn btn-choice">Choice A</button>
                         <button id="choice-b-btn" class="btn btn-choice">Choice B</button>
+                        <button id="choice-c-btn" class="btn btn-choice">Choice C</button>
+                        <button id="choice-d-btn" class="btn btn-choice">Choice D</button>
+                    </div>
+
+                    <div class="card activity-panel">
+                        <h3>Impact Feed</h3>
+                        <ul id="activity-log" class="activity-log"></ul>
                     </div>
 
                     <div class="controls">
-                        <button id="reset-btn" class="btn btn-secondary">Reset</button>
+                        <button id="reset-btn" class="btn btn-secondary">Back To Start</button>
                     </div>
                 </section>
             </div>
@@ -60,10 +99,20 @@
         <section id="end-screen" class="card hidden">
             <h2 id="end-title">Game Over</h2>
             <p id="end-message">Final message goes here.</p>
+            <p id="impact-summary" class="impact-summary">Impact summary goes here.</p>
             <p class="final-score">Final Score: <span id="final-score-value">0</span></p>
             <button id="play-again-btn" class="btn btn-primary">Play Again</button>
         </section>
     </main>
+
+    <footer class="site-footer">
+        <p>Learn more and support the mission:</p>
+        <p>
+            <a href="https://www.charitywater.org" target="_blank" rel="noopener noreferrer">charity: water website</a>
+            |
+            <a href="https://www.charitywater.org/donate" target="_blank" rel="noopener noreferrer">Donate to charity: water</a>
+        </p>
+    </footer>
 
     <div id="confetti-container" aria-hidden="true"></div>
 
